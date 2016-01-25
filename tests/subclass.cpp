@@ -12,11 +12,14 @@ public:
 		
 	virtual void load()
 	{
+		if (m_prim)
+			delete m_prim;
 		m_prim = new Primitive( Primitive::kCube, 1 );
 	};
 	virtual void display()
 	{	
-		m_prim->draw();
+		if (m_prim)
+			m_prim->draw();
 	};
 private:
 	Primitive* m_prim;
