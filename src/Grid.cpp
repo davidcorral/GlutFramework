@@ -8,14 +8,16 @@ Grid::~Grid(){};
 void
 Grid::draw() const
 {
-	glPushMatrix();
+    glPushMatrix();
 
-	glColor3f(red, green, blue);
-
+    
     int rows = 10;
     
+    // Disable lighting
+    //glDisable(GL_LIGHTING);
+    
     glBegin( GL_LINES );
-    glColor3f( 0.5f, 0.5f, 0.5f); 
+    glColor3f(red, green, blue);
     
     // Draw z
     float x, z;
@@ -40,5 +42,5 @@ Grid::draw() const
 
     glEnd();
 
-	glPopMatrix();
+    glPopMatrix();
 };

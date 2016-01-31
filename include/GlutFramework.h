@@ -54,166 +54,173 @@ namespace glutFramework
 		
 class GlutFramework 
 {
-
 public:
-	// Constants
-	const static int FPS = 60; // Frames per second
-	const static int WINDOW_WIDTH = 640;
-	const static int WINDOW_HEIGHT = 480;
-	const static int WINDOW_X_POSITION = 100;
-	const static int WINDOW_Y_POSITION = 100;	
-	const static double FRAME_TIME;		// Frame time is in milliseconds calculated using FPS
-	
+    // Constants
+    const static int FPS = 60; // Frames per second
+    const static int WINDOW_WIDTH = 640;
+    const static int WINDOW_HEIGHT = 480;
+    const static int WINDOW_X_POSITION = 100;
+    const static int WINDOW_Y_POSITION = 100;	
+    const static double FRAME_TIME;		// Frame time is in milliseconds calculated using FPS
+    
+    enum Style{ kPoints, kWireframe, kShaded };
+    
 public:
-	GlutFramework();
-	virtual ~GlutFramework();
-	
-	/** startFramework will initialize framework and start the Glut run loop. 
-	 * It must be called after the GlutFramework class is created to start the application.
-	 */
-	void startFramework(int argc, char *argv[]);
-	
-	/** Sets the title of the window to a specific string. Invoke before startFramework() 
-	 @param title - the name of the window 
-	 */
-	void setTitle( const std::string& title );
-	
-	/** Shows Grid
-	 @param status: Activate/Disable grid
-	*/
-	void showGrid( bool status );
+    GlutFramework();
+    virtual ~GlutFramework();
 
-	/** returns runtime fps */
-	int fps() const{ return m_frame_rate; };
-	
-	// ****************************
-	// ** Subclass and Implement ** 
-	// ****************************
-	
-	/** Any loading logic can be down in this method when the application starts. */
-	virtual void load();
-	
-	/** The display function is called at a specified frames-per-second (FPS). Any
-	 animation drawing code can be run in the display method.
-	 */
-	virtual void display();
-	
-	/** Called when the window dimensions change.
-	 @param width - the width of the window in pixels
-	 @param height - the height of the window in pixels
-	 */
-	virtual void reshape(int width, int height);
-	
-	/** Called when the mouse buttons are pressed. 
-	 @param button - the mouse buttons
-	 @param state - the state of the buttons
-	 @param x - the x coordinate
-	 @param y - the y coordinate
-	 */
-	virtual void mouseButtonPress(int button, int state, int x, int y);
-	
-	/** Called when the mouse moves on the screen.
-	 @param x - the x coordinate
-	 @param y - the y coordinate
-	 */
-	virtual void mouseMove(int x, int y);
-	
-	/** The keyboard function is called when a standard key is pressed down.
-	 @param key - the key press
-	 @param x - the x coordinate of the mouse
-	 @param y - the y coordinate of the mouse
-	 */
-	virtual void keyboardDown( unsigned char key, int x, int y );
-	
-	/** The keyboard function is called when a standard key is "unpressed".
-	 @param key - the key press
-	 @param x - the x coordinate of the mouse
-	 @param y - the y coordinate of the mouse
-	 */
-	virtual void keyboardUp( unsigned char key, int x, int y );
-	
-	/** The keyboard function is called when a special key is pressed down.
-	 (F1 keys, Home, Inser, Delete, Page Up/Down, End, arrow keys) 
-	 http://www.opengl.org/resources/libraries/glut/spec3/node54.html
-	 @param key - the key press
-	 @param x - the x coordinate of the mouse
-	 @param y - the y coordinate of the mouse
-	 */
-	virtual void specialKeyboardDown( int key, int x, int y );
-	
-	/** The keyboard function is called when a special key is "unpressed.
-	 (F1 keys, Home, Inser, Delete, Page Up/Down, End, arrow keys) 
-	 @param key - the key press
-	 @param x - the x coordinate of the mouse
-	 @param y - the y coordinate of the mouse
-	 */
-	virtual void specialKeyboardUp( int key, int x, int y ); 
-	
-	// -----------------------------------------------------------------------
+    /** startFramework will initialize framework and start the Glut run loop. 
+     * It must be called after the GlutFramework class is created to start the application.
+     */
+    void startFramework(int argc, char *argv[]);
 
-	/** Sets the intitial matricies that are used to setup OpenGL. */
-	void setDisplayMatricies();
-	
-	/** Sets up basic lighting */
-	void setupLights();
+    /** Sets the title of the window to a specific string. Invoke before startFramework() 
+     @param title - the name of the window 
+     */
+    void setTitle( const std::string& title );
+
+    /** Shows Grid
+     @param status: Activate/Disable grid
+    */
+    void showGrid( bool status );
+    
+    /** returns runtime fps */
+    int fps() const{ return m_frame_rate; };
+
+    /** Returns active style */
+    Style style() const{ return m_style; };
+    void  setStyle( const Style& style ){ m_style = style; };
+    
+    
+    // ****************************
+    // ** Subclass and Implement ** 
+    // ****************************
+
+    /** Any loading logic can be down in this method when the application starts. */
+    virtual void load();
+
+    /** The display function is called at a specified frames-per-second (FPS). Any
+     animation drawing code can be run in the display method.
+     */
+    virtual void display();
+
+    /** Called when the window dimensions change.
+     @param width - the width of the window in pixels
+     @param height - the height of the window in pixels
+     */
+    virtual void reshape(int width, int height);
+
+    /** Called when the mouse buttons are pressed. 
+     @param button - the mouse buttons
+     @param state - the state of the buttons
+     @param x - the x coordinate
+     @param y - the y coordinate
+     */
+    virtual void mouseButtonPress(int button, int state, int x, int y);
+
+    /** Called when the mouse moves on the screen.
+     @param x - the x coordinate
+     @param y - the y coordinate
+     */
+    virtual void mouseMove(int x, int y);
+
+    /** The keyboard function is called when a standard key is pressed down.
+     @param key - the key press
+     @param x - the x coordinate of the mouse
+     @param y - the y coordinate of the mouse
+     */
+    virtual void keyboardDown( unsigned char key, int x, int y );
+
+    /** The keyboard function is called when a standard key is "unpressed".
+     @param key - the key press
+     @param x - the x coordinate of the mouse
+     @param y - the y coordinate of the mouse
+     */
+    virtual void keyboardUp( unsigned char key, int x, int y );
+
+    /** The keyboard function is called when a special key is pressed down.
+     (F1 keys, Home, Inser, Delete, Page Up/Down, End, arrow keys) 
+     http://www.opengl.org/resources/libraries/glut/spec3/node54.html
+     @param key - the key press
+     @param x - the x coordinate of the mouse
+     @param y - the y coordinate of the mouse
+     */
+    virtual void specialKeyboardDown( int key, int x, int y );
+
+    /** The keyboard function is called when a special key is "unpressed.
+     (F1 keys, Home, Inser, Delete, Page Up/Down, End, arrow keys) 
+     @param key - the key press
+     @param x - the x coordinate of the mouse
+     @param y - the y coordinate of the mouse
+     */
+    virtual void specialKeyboardUp( int key, int x, int y ); 
+
+    // -----------------------------------------------------------------------
+
+    /** Sets the intitial matricies that are used to setup OpenGL. */
+    void setDisplayMatricies();
+
+    /** Sets up basic lighting */
+    void setupLights();
 
 private:
-	/** Initializes GLUT and registers the callback functions. */
-	void init();
-	
-	/** The run method is called by GLUT and contains the logic to set the framerate of the application. */
-	void run();
-	
-	/** The displayFramework() function sets up initial GLUT state and calculates the
-	 change in time between each frame. It calls the display(float) function which can
-	 be subclassed.
-	 */
-	void displayFramework();
-	
-	// ------------------------------------------------------------------------
-	void mouseButtonPressLogic(int button, int state, int x, int y);
-	void mouseMoveLogic(int x, int y);
-	void keyboardDownLogic( unsigned char key, int x, int y );
-	void keyboardUpLogic( unsigned char key, int x, int y );
-	void specialKeyboardDownLogic( int key, int x, int y );
-	void specialKeyboardUpLogic( int key, int x, int y ); 
-	
-	// ------------------------------------------------------------------------
-	// ** Static functions which are passed to GLUT function callbacks **
-	// http://www.parashift.com/c++-faq-lite/pointers-to-members.html#faq-33.1
-	static void displayWrapper();
-	static void reshapeWrapper(int width, int height);
-	static void runWrapper();
-	static void mouseButtonPressWrapper(int button, int state, int x, int y);
-	static void mouseMoveWrapper(int x, int y);
-	static void keyboardDownWrapper(unsigned char key, int x, int y);
-	static void keyboardUpWrapper(unsigned char key, int x, int y);
-	static void specialKeyboardDownWrapper(int key, int x, int y);
-	static void specialKeyboardUpWrapper(int key, int x, int y);
+    /** Initializes GLUT and registers the callback functions. */
+    void init();
+
+    /** The run method is called by GLUT and contains the logic to set the framerate of the application. */
+    void run();
+
+    /** The displayFramework() function sets up initial GLUT state and calculates the
+     change in time between each frame. It calls the display(float) function which can
+     be subclassed.
+     */
+    void displayFramework();
+
+    // ------------------------------------------------------------------------
+    void mouseButtonPressLogic(int button, int state, int x, int y);
+    void mouseMoveLogic(int x, int y);
+    void keyboardDownLogic( unsigned char key, int x, int y );
+    void keyboardUpLogic( unsigned char key, int x, int y );
+    void specialKeyboardDownLogic( int key, int x, int y );
+    void specialKeyboardUpLogic( int key, int x, int y ); 
+
+    // ------------------------------------------------------------------------
+    // ** Static functions which are passed to GLUT function callbacks **
+    // http://www.parashift.com/c++-faq-lite/pointers-to-members.html#faq-33.1
+    static void displayWrapper();
+    static void reshapeWrapper(int width, int height);
+    static void runWrapper();
+    static void mouseButtonPressWrapper(int button, int state, int x, int y);
+    static void mouseMoveWrapper(int x, int y);
+    static void keyboardDownWrapper(unsigned char key, int x, int y);
+    static void keyboardUpWrapper(unsigned char key, int x, int y);
+    static void specialKeyboardDownWrapper(int key, int x, int y);
+    static void specialKeyboardUpWrapper(int key, int x, int y);
 
 private:
-	static GlutFramework* instance;
-	std::string m_title;
-	bool m_show_grid;
-	
-	// Objects
-	Grid grid;
-	Keyboard keyboard;
-	Camera camera;
-	
-	// MOUSE
-	bool m_modKey;
-	bool l_mouse_down;
-	bool m_mouse_down;
-	bool r_mouse_down;
+    static GlutFramework* instance;
+    std::string m_title;
+    bool m_show_grid;
+    Style m_style;
+    
+    // Objects
+    Grid grid;
+    Keyboard keyboard;
+    Camera camera;
 
-	// SCREEN
+    // MOUSE
+    bool m_modKey;
+    bool l_mouse_down;
+    bool m_mouse_down;
+    bool r_mouse_down;
+
+    // SCREEN
     int   m_posPrevX;   // position on screen
     int   m_posPrevY;   // position on screen
 
     // FPS
-	double m_frame_rate;
-	Timer m_timer;
+    double m_frame_rate;
+    Timer m_timer;
 	
 }; // end class GlutFramework
 	
