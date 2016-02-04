@@ -328,14 +328,21 @@ void GlutFramework::displayFramework()
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // Clear once
 
-    if ( m_style == kWireframe )
+    if ( m_style == kPoints )
     {
         glDisable(GL_LIGHTING);
+        glDisable(GL_LIGHT0);
+    }
+    else if ( m_style == kWireframe )
+    {
+        glDisable(GL_LIGHTING);
+        glDisable(GL_LIGHT0);
         glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
     }
     else if ( m_style == kShaded )
     {
         glEnable(GL_LIGHTING);
+        glEnable(GL_LIGHT0);    
         glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );        
     };
     
