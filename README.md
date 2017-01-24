@@ -16,19 +16,19 @@ The GLUT Object Oriented Framework is a set of classes that wrap around the GLUT
 
 ### Hotkeys: ###
 
-	Espace: Tumble, track, dolly, roll, or zoom the camera
 	1: Draw points
 	2: Draw wireframe
 	3: Draw shaded
 	4: Draw wireframe and shaded
 	g: Show/Hide grid
+	Espace: Tumble, track, dolly, roll, or zoom the camera
 	Esc: Exit
 
 ## Examples: ##
 
 ### teapot.cpp ###
 ~~~{.cpp}
-#include "GlutFramework.h"
+#include <glutframework/GlutFramework.h>
 
 using namespace glutframework;
 
@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
 
 ### subclass.cpp ###
 ~~~{.cpp}
-#include "GlutFramework.h"
-#include "Primitive.h"
+#include <glutframework/GlutFramework.h>
+#include <glutframework/Primitive.h>
 
 using namespace glutframework;
 
