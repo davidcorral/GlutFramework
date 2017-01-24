@@ -1,6 +1,12 @@
 # GLUT Object Oriented Framework #
 
+<p align="center">
+  <img src="https://www.iusb.edu/computerscience/people/faculty/vrajitoru/teaching/c481/files/teapot_bw.gif" alt="Teapot"/>
+</p>
+
 ## Overview: ##
+
+The GLUT Object Oriented Framework is a set of classes that wrap around the GLUT C-style function calls to create an animation framework. It provides a simple object oriented wrapper that has virtual methods to override default behavior. Four lines of code within a main function can be used to get a graphics window that draws a teapot. 
 
 The original authors of this project are Paul Soft and Dimitar Stanev.
 I basically merged both projects and improved some areas like the camera, primitives, grid etc. 
@@ -11,18 +17,6 @@ https://github.com/PaulSolt/GLUT-Object-Oriented-Framework.git
 
 Dimitar Stanev:
 https://github.com/mitkof6/GlutFramework.git
-
-The GLUT Object Oriented Framework is a set of classes that wrap around the GLUT C-style function calls to create an animation framework. It provides a simple object oriented wrapper that has virtual methods to override default behavior. Four lines of code within a main function can be used to get a graphics window that draws an animated teapot. 
-
-### Hotkeys: ###
-
-	1: Draw points
-	2: Draw wireframe
-	3: Draw shaded
-	4: Draw wireframe and shaded
-	g: Show/Hide grid
-	Espace: Tumble, track, dolly, roll, or zoom the camera
-	Esc: Exit
 
 ## Examples: ##
 
@@ -72,3 +66,13 @@ private:
 	Primitive* m_prim;
 };
 ~~~
+
+### Hotkeys: ###
+
+	1: Draw points
+	2: Draw wireframe
+	3: Draw shaded
+	4: Draw wireframe and shaded
+	g: Show/Hide grid
+	Espace: Tumble, track, dolly, roll, or zoom the camera
+	Esc: Exit
