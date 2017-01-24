@@ -5,7 +5,10 @@
  *      Author: Jim Stanev
  */
 
-#include <Camera.h>
+#include <glutframework/Camera.h>
+
+namespace glutframework
+{
 
 Camera::Camera()
 {
@@ -136,4 +139,6 @@ Camera::draw() const
     gluLookAt( m_camPos[0], m_camPos[1], m_camPos[2], // camera position
                    m_camAim[0], m_camAim[1], m_camAim[2], // camera aim
                    0.0f, 1.0f, 0.0f);                     // camera up vector
+};
+
 };

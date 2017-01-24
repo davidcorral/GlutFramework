@@ -22,9 +22,9 @@
  * THE SOFTWARE.
  */
 
-#include "../include/GlutFramework.h"
+#include <glutframework/GlutFramework.h>
 
-using namespace glutFramework;
+using namespace glutframework;
 
 /**
  * A sample program start that uses the base class GlutFramework to create a

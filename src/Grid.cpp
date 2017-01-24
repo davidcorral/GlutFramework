@@ -1,4 +1,7 @@
-#include "Grid.h"
+#include <glutframework/Grid.h>
+
+namespace glutframework
+{
 
 Grid::Grid( float size ) 
 : Renderable(), size(size){};
@@ -43,4 +46,6 @@ Grid::draw() const
     glEnd();
 
     glPopMatrix();
+};
+
 };

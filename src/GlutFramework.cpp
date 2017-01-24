@@ -22,9 +22,9 @@
  * THE SOFTWARE.
  */
 
-#include <GlutFramework.h>
+#include <glutframework/GlutFramework.h>
 
-namespace glutFramework 
+namespace glutframework 
 {
 
 // Set constants
@@ -36,6 +36,7 @@ GlutFramework::GlutFramework()
     m_show_grid = true;
     m_frame_rate = 0;
     m_title = "GLUT Framework: Paul Solt 2010";
+    m_style = GlutFramework::kShaded;
 
     m_modKey = false;
     l_mouse_down = false;
@@ -173,6 +174,9 @@ void GlutFramework::keyboardDownLogic( unsigned char key, int x, int y )
         case '3':
             m_style = GlutFramework::kShaded;
             break;
+        case '4':
+            m_style = GlutFramework::kWireShaded;
+            break;
         case 'g':
             m_show_grid = !m_show_grid;
             break;
@@ -301,7 +305,8 @@ void GlutFramework::showGrid( bool status )
 // **************************
 void GlutFramework::init() 
 {
-    glClearColor(0.0, 0.0, 0.0, 1.0);
+    // Background color
+    glClearColor(0.180, 0.220, 0.260, 1.0);
     
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
@@ -325,7 +330,9 @@ void GlutFramework::displayFramework()
     // Start the timer on the initial frame
     m_timer.start();
 
-    glClearColor(0.0, 0.0, 0.0, 1.0);
+    // Background color
+    glClearColor(0.180, 0.220, 0.260, 1.0); // 
+
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // Clear once
 
     if ( m_style == kPoints )
@@ -343,6 +350,12 @@ void GlutFramework::displayFramework()
     {
         glEnable(GL_LIGHTING);
         glEnable(GL_LIGHT0);    
+        glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );        
+    }
+    else if ( m_style == kWireShaded )
+    {
+        glDisable(GL_LIGHTING);
+        glDisable(GL_LIGHT0);
         glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );        
     };
     
@@ -406,4 +419,4 @@ void GlutFramework::specialKeyboardUpWrapper(int key, int x, int y) {
     instance->specialKeyboardUp(key,x,y);
 }
 	
-} // end namespace glutFramework
+} // end namespace glutframework

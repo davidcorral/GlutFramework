@@ -22,8 +22,7 @@
  * THE SOFTWARE.
  */
 
-#ifndef KEYBOARD_H
-#define KEYBOARD_H
+#pragma once
 
 /** Keyboard.h 
  *  
@@ -33,7 +32,7 @@
  * Author: Paul Solt 8-21-10
  */
 
-namespace glutFramework 
+namespace glutframework 
 {
 	
 class Keyboard 
@@ -73,5 +72,4 @@ public:
 	bool isKeyDown( int key );
 };
 
-}
-#endif
+};

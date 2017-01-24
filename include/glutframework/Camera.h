@@ -5,6 +5,9 @@
 
 #define PI 3.14159265359
 
+namespace glutframework
+{
+
 class Camera: public Renderable
 {
 public:
@@ -32,3 +35,5 @@ private:
     float m_camAim[3];
 
 }; // end class Camera
+
+}; // end namespace

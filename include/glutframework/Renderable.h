@@ -17,13 +17,16 @@
 	#include <GL/glext.h>
 #endif
 
+namespace glutframework
+{
+
 class Renderable
 {
 public:
 	enum DrawStyle
 	{
-            kWireframe,
-            kShaded
+		kWireframe,
+		kShaded
 	};
 
 	Renderable(): red(1.0f), green(1.0f), blue(1.0f), style( kShaded ){};
@@ -38,3 +41,4 @@ protected:
 	DrawStyle style;
 };
 
+}; // end namespace

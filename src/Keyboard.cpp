@@ -22,9 +22,9 @@
  * THE SOFTWARE.
  */
 
-#include <Keyboard.h>
+#include <glutframework/Keyboard.h>
 
-namespace glutFramework 
+namespace glutframework 
 {	
 
 Keyboard::Keyboard() 

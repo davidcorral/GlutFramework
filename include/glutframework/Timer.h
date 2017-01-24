@@ -1,5 +1,8 @@
 #include <chrono>
 
+namespace glutframework
+{
+
 class Timer
 {
 private:
@@ -37,3 +40,5 @@ private:
     bool m_stopped;
 
 }; // end class Timer
+
+};

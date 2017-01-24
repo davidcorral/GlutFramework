@@ -1,6 +1,8 @@
 #pragma once
 #include "Renderable.h"
 
+namespace glutframework
+{
 
 class Primitive : public Renderable
 {
@@ -21,3 +23,4 @@ private:
 	float size;
 };
 
+};

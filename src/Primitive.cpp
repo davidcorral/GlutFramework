@@ -1,4 +1,7 @@
-#include <Primitive.h>
+#include <glutframework/Primitive.h>
+
+namespace glutframework
+{
 
 Primitive::Primitive( const Type& type, float size )
 : Renderable(), m_type(type), size(size){};
@@ -36,4 +39,6 @@ Primitive::draw() const
 	}
 	
 	glPopMatrix();
+};
+
 };

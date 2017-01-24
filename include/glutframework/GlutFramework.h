@@ -22,8 +22,7 @@
  * THE SOFTWARE.
  */
 
-#ifndef GLUT_FRAMEWORK_H
-#define GLUT_FRAMEWORK_H
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -49,7 +48,7 @@
  *
  * @author Paul Solt 8-22-10
  */
-namespace glutFramework 
+namespace glutframework 
 {
 		
 class GlutFramework 
@@ -63,7 +62,7 @@ public:
     const static int WINDOW_Y_POSITION = 100;	
     const static double FRAME_TIME;		// Frame time is in milliseconds calculated using FPS
     
-    enum Style{ kPoints, kWireframe, kShaded };
+    enum Style{ kPoints, kWireframe, kShaded, kWireShaded };
     
 public:
     GlutFramework();
@@ -224,6 +223,4 @@ private:
 	
 }; // end class GlutFramework
 	
-} // end namespace glutFramework
-
-#endif /* GLUT_FRAMEWORK_H */
+} // end namespace glutframework
