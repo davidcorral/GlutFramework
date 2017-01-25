@@ -76,3 +76,22 @@ private:
 	g: Show/Hide grid
 	Espace: Tumble, track, dolly, roll, or zoom the camera
 	Esc: Exit
+
+* * *
+### Dependencies ###
+* [OpenGL](https://www.opengl.org/registry/)
+* [GLUT](https://www.opengl.org/resources/libraries/glut/)
+* [GLEW](https://github.com/Perlmint/glew-cmake)
+
+### How to Build ###
+~~~
+mkdir build
+cd build
+cmake ..
+cmake --build .
+~~~
+### Install ###
+~~~
+cd build
+cmake --build . --target Install
+~~~
